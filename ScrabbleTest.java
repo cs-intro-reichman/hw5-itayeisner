@@ -113,7 +113,7 @@ public class ScrabbleTest {
         Scrabble.init();
         // Test with multiple valid words that can be made from "aretiin"
         //String mockInputStr = "train\ninvalid1\ninvalid2\n.\n";
-        String mockInputStr = "train\n.\n";
+        String mockInputStr = "train\ninvalid1\ninvalid2\n.\n";
         ByteArrayInputStream mockInput = new ByteArrayInputStream(mockInputStr.getBytes());
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
