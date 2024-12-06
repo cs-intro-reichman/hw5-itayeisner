@@ -15,7 +15,7 @@ public class ScrabbleTest {
             case "playHandWithMockInput": testPlayHandWithMockInput(); break;
             case "playGameWithMockInput": testPlayGameWithMockInput(); break;
             default: System.out.println("Unknown test: " + args[0]);
-        }
+        } 
     }
 
     private static void testIsWordInDictionary() {
@@ -112,6 +112,7 @@ public class ScrabbleTest {
         System.out.println("\nTesting playHand with mock input (hand: aretiin):");
         Scrabble.init();
         // Test with multiple valid words that can be made from "aretiin"
+        //String mockInputStr = "train\ninvalid1\ninvalid2\n.\n";
         String mockInputStr = "train\ninvalid1\ninvalid2\n.\n";
         ByteArrayInputStream mockInput = new ByteArrayInputStream(mockInputStr.getBytes());
         InputStream originalIn = System.in;
