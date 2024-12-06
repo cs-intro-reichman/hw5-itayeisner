@@ -8,6 +8,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+    
         //// Put your other tests here.
     }
 
@@ -20,14 +21,15 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int sum = 0;
+        for(int i=0;i<str.length();i++){sum += str.charAt(i)==ch ? 1:0;}
+        return sum;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
      *  Examples:
      *  subsetOf("sap","space") returns true
-     *  subsetOf("spa","space") returns true
+     *  subsetOf("spa","space") returns false
      *  subsetOf("pass","space") returns false
      *  subsetOf("c","space") returns true
      *
@@ -36,7 +38,20 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
+        String lowstr1=str1.toLowerCase();
+        String lowstr2=str2.toLowerCase();
+        if(remove(lowstr2, lowstr1).length()==(str2.length()-str1.length())){return true;}
+       /*code for find substring: 
+        for(int i=0;i<(str1.length()-str2.length());i++){
+            int counter = 0;
+            for(int j=0;j<str2.length();j++){
+               if(lowstr1.charAt(i+j)==lowstr2.charAt(j)){counter++;}
+               else{
+                counter=0;
+                break;} 
+            }
+            if(counter==str2.length()){return true;}
+        }*/
         return false;
     }
 
@@ -49,8 +64,12 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String spaced = "";
+        for(int i=0;i<str.length();i++){
+           if(i+1!=str.length()) spaced += str.charAt(i) + " ";
+            else spaced += str.charAt(i);
+        }
+        return spaced;
     }
   
     /**
@@ -64,8 +83,11 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        String str = "";
+        for(int i=0;i<n;i++){
+            str += (char) ((int) (Math.random()*26+97));
+        }
+        return str;
     }
 
     /**
@@ -78,8 +100,29 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+        char[] arr1 = String2Arr(str1);
+        char[] arr2 = String2Arr(str2);
+        String removing ="";
+        for(int i=0;i<arr2.length;i++){
+            for(int j=0;j<arr1.length;j++){
+                if(arr1[j]==arr2[i]){
+                    arr1[j]=' ';
+                    break;
+                }
+            }
+        }
+        for(int i=0;i<arr1.length;i++){
+            if(arr1[i]!=' '){removing+=arr1[i];}
+        }
+        return removing;
+    }
+
+    public static char[] String2Arr(String str) {
+        char[] arr1 = new char[str.length()];
+        for(int i=0;i<str.length();i++){
+            arr1[i]= str.charAt(i);
+        }
+        return arr1;
     }
 
     /**
@@ -96,5 +139,22 @@ public class MyString {
          // Insert the character at the random index
          String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
          return result;
-    }    
+    } 
+    
+    public static boolean isRuni(String str1) {
+        String lowstr1="runni";
+        String lowstr2=str1.toLowerCase();
+     
+        for(int i=0;i<(str1.length()-lowstr1.length());i++){
+            int counter = 0;
+            for(int j=0;j<lowstr1.length();j++){
+               if(lowstr2.charAt(i+j)==lowstr1.charAt(j)){counter++;}
+               else{
+                counter=0;
+                break;} 
+            }
+            if(counter==lowstr1.length()){return true;}
+        }
+        return false;
+    }
 }
