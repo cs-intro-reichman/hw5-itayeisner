@@ -65,7 +65,7 @@ public class Scrabble {
 		}
 		score=sum*word.length();
 		if(word.length()==10){score+=50;}
-		if(MyString.isRuni(word)){score+=1000;}
+		if(MyString.subsetOf("runi", word)){score+=1000;}
 		return score;
 	}
 
@@ -145,7 +145,7 @@ public class Scrabble {
 		////testBuildingTheDictionary();  
 		////testScrabbleScore();    
 		////testCreateHands();  
-		////testPlayHands();
+		testPlayHands();
 		////playGame();
 	}
 
@@ -173,7 +173,7 @@ public class Scrabble {
 	public static void testPlayHands() {
 		init();
 		//playHand("ocostrza");
-		//playHand("arbffip");
+		playHand("aretiin");
 		//playHand("aretiin");
 	}
 }
